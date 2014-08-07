@@ -1,0 +1,16 @@
+<%= submit_tag 'Akceptuj zaznaczone', :id=> 'timeEntriesAccept' -%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#timeEntriesAccept").click(function() {
+			$("#time_entries").append($(document.createElement("input")).attr({
+				'id' : 'time_entry_accepted_raport',
+				'name' : 'time_entry[accepted_raport]',
+				'value' : '1',
+				'type' : 'hidden'
+			}));
+			$("#time_entries").attr('action', '/redmine/time_entries/bulk_update');
+			$("#time_entries").submit();
+		});
+	});
+
+</script>
