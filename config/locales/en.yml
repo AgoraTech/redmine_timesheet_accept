@@ -2,3 +2,4 @@
 en:
   # my_label: "My label"
   accept_not_accepted: Accept not yet accepted
+  report_is_accpeted: time entry is accepted by report, you cannot change it
