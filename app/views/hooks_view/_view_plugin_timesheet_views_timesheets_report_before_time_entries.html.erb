@@ -8,6 +8,13 @@
 				'value' : '1',
 				'type' : 'hidden'
 			}));
+
+			$("#time_entries").append($(document.createElement("input")).attr({
+				'name' : 'back_url',
+				'value' : '/redmine/timesheet/index',
+				'type' : 'hidden'
+			}));
+
 			$("#time_entries").attr('action', '/redmine/time_entries/bulk_update');
 			$("#time_entries").submit();
 		});

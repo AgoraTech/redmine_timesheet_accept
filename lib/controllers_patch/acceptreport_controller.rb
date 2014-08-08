@@ -18,25 +18,34 @@ module ControllersPatch
       def bulk_update_with_bulk_update_accept_report
         attributes = parse_params_for_bulk_time_entry_attributes(params)
         unsaved_time_entry_ids = []
-        @time_entries.each do |time_entry|
-          time_entry.reload
-          time_entry.safe_attributes = attributes
 
-          if(paramsHasAcceptParameter(params))
-            logger.info time_entry.accepted_report
+        if(paramsHasAcceptParameter(params))
+          acceptedReportDate = DateTime.now
+          acceptedReportUserId = User.current.id
+
+          @time_entries.each do |time_entry|
+            time_entry.reload
+
             if(!time_entry.accepted_report)
-              time_entry.update_column("accepted_report", 1)
-              time_entry.update_column("accepted_report_user", User.current.id)
-              time_entry.update_column("accepted_report_date", Time.now.utc)
+              time_entry.update_column("accepted_report", true)
+              time_entry.update_column("accepted_report_user", acceptedReportUserId)
+              time_entry.update_column("accepted_report_date", acceptedReportDate)
             end
-          else
+
+          end
+
+          logger.info "User '#{User.current.login}' accept report at #{acceptedReportDate}"
+        else
+          @time_entries.each do |time_entry|
+            time_entry.reload
+            time_entry.safe_attributes = attributes
             call_hook(:controller_time_entries_bulk_edit_before_save, { :params => params, :time_entry => time_entry })
             unless time_entry.save
             unsaved_time_entry_ids << time_entry.id
             end
           end
-
         end
+
         set_flash_from_bulk_time_entry_save(@time_entries, unsaved_time_entry_ids)
         redirect_back_or_default project_time_entries_path(@projects.first)
       end
