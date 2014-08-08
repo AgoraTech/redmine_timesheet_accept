@@ -6,7 +6,6 @@ module TimeEntryPatch
       base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
       base.class_eval do
-        unloadable
         safe_attributes 'accepted_report', 'accepted_report_user', 'accepted_report_date'
         before_validation :check_if_time_entry_is_not_accepted
         before_destroy :check_if_time_entry_is_not_accepted
