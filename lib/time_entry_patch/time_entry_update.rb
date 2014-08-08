@@ -6,7 +6,7 @@ module TimeEntryPatch
       base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
       base.class_eval do
-        safe_attributes 'accepted_raport', 'accepted_raport_user'
+        safe_attributes 'accepted_report', 'accepted_report_user', 'accepted_report_date'
       end
     end
 

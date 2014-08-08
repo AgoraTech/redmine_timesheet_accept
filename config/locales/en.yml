@@ -1,3 +1,4 @@
 # English strings go here for Rails i18n
 en:
   # my_label: "My label"
+  accept_not_accepted: Accept not yet accepted

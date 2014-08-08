@@ -1,10 +1,10 @@
-<%= submit_tag 'Akceptuj zaznaczone', :id=> 'timeEntriesAccept' -%>
+<%= submit_tag l(:accept_not_accepted) , :id=> 'timeEntriesAccept' -%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#timeEntriesAccept").click(function() {
 			$("#time_entries").append($(document.createElement("input")).attr({
-				'id' : 'time_entry_accepted_raport',
-				'name' : 'time_entry[accepted_raport]',
+				'id' : 'time_entry_accepted_report',
+				'name' : 'time_entry[accepted_report]',
 				'value' : '1',
 				'type' : 'hidden'
 			}));
