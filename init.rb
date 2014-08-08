@@ -1,6 +1,5 @@
 require_dependency 'time_entry_patch/time_entry_update'
 require_dependency 'hooks/plugin_timesheet_views_timesheets_report_before_time_entries'
-require_dependency 'hooks/add_attributes_to_time_entry_before_save_hooks'
 require_dependency 'controllers_patch/acceptreport_controller'
 
 
