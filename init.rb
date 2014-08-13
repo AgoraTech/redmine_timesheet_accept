@@ -6,7 +6,7 @@ Redmine::Plugin.register :redmine_timesheet_accept do
   version '0.0.1'
   url 'https://github.com/AgoraTech/redmine_timesheet_accept'
   author_url 'https://github.com/AgoraTech'
-  #permission :redmine_timesheet_accept_button, {}, :require => :member
+  permission :redmine_timesheet_accept_button, {}
 end
 require 'redmine'
 require_dependency 'time_entry_patch/time_entry_update'
