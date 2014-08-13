@@ -1,0 +1,12 @@
+<td align="center"><strong><%=time_entry.accepted_report%></strong></td>
+<td align="center"><strong><%=time_entry.accepted_report_date%></strong></td>
+
+<%=
+if(time_entry.accepted_report_user)
+	userName = user = User.find_by_id(time_entry.accepted_report_user).name
+else
+	userName = ""
+end
+%>
+
+<td align="center"><strong><%=userName%></strong></td>
