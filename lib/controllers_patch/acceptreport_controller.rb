@@ -20,18 +20,19 @@ module ControllersPatch
         unsaved_time_entry_ids = []
 
         if(paramsHasAcceptParameter(params))
-          acceptedReportDate = DateTime.now
-          acceptedReportUserId = User.current.id
+          if User.current.allowed_to?(:redmine_timesheet_accept_button,  nil, :global => true)
+            acceptedReportDate = DateTime.now
+            acceptedReportUserId = User.current.id
 
-          @time_entries.each do |time_entry|
-            time_entry.reload
+            @time_entries.each do |time_entry|
+              time_entry.reload
 
-            if(!time_entry.accepted_report)
-              time_entry.update_column("accepted_report", true)
-              time_entry.update_column("accepted_report_user", acceptedReportUserId)
-              time_entry.update_column("accepted_report_date", acceptedReportDate)
+              if(!time_entry.accepted_report)
+                time_entry.update_column("accepted_report", true)
+                time_entry.update_column("accepted_report_user", acceptedReportUserId)
+                time_entry.update_column("accepted_report_date", acceptedReportDate)
+              end
             end
-
           end
 
           logger.info "User '#{User.current.login}' accept report at #{acceptedReportDate}"

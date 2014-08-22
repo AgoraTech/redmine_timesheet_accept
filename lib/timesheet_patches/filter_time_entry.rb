@@ -1,5 +1,5 @@
 module TimesheetPatches
-  module FiltrTimeEntry
+  module FilterTimeEntry
     unloadable
     def self.included(base)
       base.extend(ClassMethods)
@@ -19,11 +19,10 @@ module TimesheetPatches
         self.accepted_report = options[:accepted_report] || "all"
         initialize_without_initialize_accept(options)
       end
-
     end
   end
 end
 
 ActionDispatch::Callbacks.to_prepare do
-  Timesheet.send(:include,  TimesheetPatches::FiltrTimeEntry)
+  Timesheet.send(:include,  TimesheetPatches::FilterTimeEntry)
 end
