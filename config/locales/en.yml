@@ -1,3 +1,11 @@
-# English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  accept_not_accepted: Accept not yet accepted
+  report_is_accpeted: time entry is accepted by report, you cannot change it
+  timesheet_filter_display_all: display all
+  timesheet_filter_by_accepted_report: accepted
+  timesheet_filter_by_not_accepted_report: not accpeted
+  timesheet_filter_by_report: Report
+  redmine_timesheet_accept_button: Accept Report timesheet
+  is_accepted: Accepted
+  accepted_report_user: Accepted by User
+  accepted_report_date: Date accepted

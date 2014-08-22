@@ -1,0 +1,11 @@
+pl:
+  accept_not_accepted: Akceptuj nie zaakceptowane
+  report_is_accpeted: Czas został już zaakceptowny w raporcie
+  timesheet_filter_display_all: Wyświetl wszystkie
+  timesheet_filter_by_accepted_report: Wyświetl zaakceptowane
+  timesheet_filter_by_not_accepted_report: Wyświetl nie zaakceptowane
+  timesheet_filter_by_report: Raport
+  redmine_timesheet_accept_button: Akceptuj raport
+  is_accepted: Zaakceptowany
+  accepted_report_user: Zaakceptowane przez Użytkownika
+  accepted_report_date: Data akceptacji raportu
