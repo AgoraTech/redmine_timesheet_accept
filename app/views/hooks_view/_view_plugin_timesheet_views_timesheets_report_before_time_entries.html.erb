@@ -12,11 +12,11 @@
 
 			$("#time_entries").append($(document.createElement("input")).attr({
 				'name' : 'back_url',
-				'value' : '/redmine/timesheet/index',
+				'value' : '<%= url_for :only_path=>false,:overwrite_params=>{} -%>',
 				'type' : 'hidden'
 			}));
 
-			$("#time_entries").attr('action', '/redmine/time_entries/bulk_update');
+			$("#time_entries").attr('action', '<%= url_for :controller => 'timelog', :action=> 'bulk_update' -%>');
 			$("#time_entries").submit();
 		});
 	});
