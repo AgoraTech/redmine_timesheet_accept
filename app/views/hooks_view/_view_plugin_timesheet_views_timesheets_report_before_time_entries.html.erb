@@ -20,5 +20,23 @@
 			$("#time_entries").submit();
 		});
 	});
+
+$('div.contextual').append('<form id="csv_form" method="post" action=""></form>');
+var csvForm = $("#csv_form");
+
+token = $("meta[name=csrf-token]").attr("content");
+csvForm.append('<input type="hidden" value="'+token+'" name="authenticity_token">');
+csvForm.append('<input type="hidden" value="post" name="_method">');
+csvForm.attr("action", $('a.icon-timesheet')[0].href.split(/\?/)[0]);
+$.each( $('a.icon-timesheet')[0].href.split(/\?/).pop().split(/&/), function( index, value ) {
+	var kv = value.split(/=/);
+	csvForm.append('<input type="hidden" value="'+decodeURIComponent(kv.pop())+'" name="' + decodeURIComponent(kv.pop()) + '">');
+	});
+
+$('a.icon-timesheet').click(function() {
+	$("#csv_form")[0].submit();
+	return false;
+})
+
 </script>
 <%end%>
