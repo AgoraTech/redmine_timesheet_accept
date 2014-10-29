@@ -16,7 +16,7 @@
 				'type' : 'hidden'
 			}));
 
-			$("#time_entries").attr('action', '<%= url_for :controller => 'timelog', :action=> 'bulk_update' -%>');
+			$("#time_entries").attr('action', 'accept');
 			$("#time_entries").submit();
 		});
 });

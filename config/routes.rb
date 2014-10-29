@@ -9,3 +9,5 @@ resources :time_entries, :controller => 'timelog', :except => :destroy do
       post 'bulk_update_accept_report'
     end
   end
+
+post 'timesheet/accept', to: 'accepts#acceptreport'
