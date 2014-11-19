@@ -1,7 +1,7 @@
 <div class="radiobutton-label">
 	<label for="accepted_report"><%= l(:timesheet_filter_by_report)%></label>
-	<br><%= radio_button_tag 'timesheet[accepted_report]', 'all', true%> <%= l(:timesheet_filter_display_all)%>
-	<br><%= radio_button_tag 'timesheet[accepted_report]', '1' %> <%= l(:timesheet_filter_by_accepted_report)%>
-	<br><%= radio_button_tag 'timesheet[accepted_report]', '0' %>  <%= l(:timesheet_filter_by_not_accepted_report)%>
+	<br><%= radio_button_tag 'timesheet[accepted_report]', 'all', false%> <%= l(:timesheet_filter_display_all)%>
+	<br><%= radio_button_tag 'timesheet[accepted_report]', '1', false %> <%= l(:timesheet_filter_by_accepted_report)%>
+	<br><%= radio_button_tag 'timesheet[accepted_report]', '0', true %>  <%= l(:timesheet_filter_by_not_accepted_report)%>
 </div>
 

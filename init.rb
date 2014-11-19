@@ -3,7 +3,7 @@ Redmine::Plugin.register :redmine_timesheet_accept do
   name 'Redmine Timesheet Accept plugin'
   author 'agora'
   description 'This is a plugin for Redmine'
-  version '0.0.1'
+  version '0.0.2'
   url 'https://github.com/AgoraTech/redmine_timesheet_accept'
   author_url 'https://github.com/AgoraTech'
   permission :redmine_timesheet_accept_button, {}
