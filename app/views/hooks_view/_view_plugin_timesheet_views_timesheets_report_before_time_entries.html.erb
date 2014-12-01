@@ -1,4 +1,4 @@
-<% if User.current.allowed_to?(:redmine_timesheet_accept_button,  nil, :global => true) %>
+<% if Timesheet.currentUserCanAcceptReport %>
 <%= submit_tag l(:accept_not_accepted) , :id=> 'timeEntriesAccept' -%>
 <script type="text/javascript">
 	$(document).ready(function() {

@@ -9,7 +9,7 @@ class AcceptsController < ApplicationController
     unsaved_time_entry_ids = []
 
     if(paramsHasAcceptParameter(params))
-      if User.current.allowed_to?(:redmine_timesheet_accept_button,  nil, :global => true)
+      if Timesheet.currentUserCanAcceptReport
         acceptedReportDate = DateTime.now
         acceptedReportUserId = User.current.id
         logger.info params["time_entry"]
