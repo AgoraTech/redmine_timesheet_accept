@@ -1,4 +1,4 @@
-<% if User.current.allowed_to?(:redmine_timesheet_accept_button,  nil, :global => true) %>
+<% if Timesheet.currentUserCanAcceptReport %>
 <%= submit_tag l(:accept_not_accepted) , :id=> 'timeEntriesAccept' -%>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -16,9 +16,35 @@
 				'type' : 'hidden'
 			}));
 
-			$("#time_entries").attr('action', '<%= url_for :controller => 'timelog', :action=> 'bulk_update' -%>');
+			$("#time_entries").attr('action', 'accept');
 			$("#time_entries").submit();
 		});
-	});
+});
+
+
+
 </script>
 <%end%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('div.contextual').append('<form id="csv_form" method="post" action=""></form>');
+		var
+			$csvForm = $("#csv_form"),
+			$token = $("meta[name=csrf-token]").attr("content"),
+			$anhoricon = $('a.icon-timesheet');
+
+		$csvForm.append('<input type="hidden" value="' + $token + '" name="authenticity_token">')
+				.append('<input type="hidden" value="post" name="_method">')
+				.attr("action", $anhoricon.attr('href').split(/\?/)[0]);
+
+		$.each( $anhoricon.attr('href').split(/\?/).pop().split(/&/), function( index, value ) {
+			var kv = value.split(/=/);
+			$csvForm.append('<input type="hidden" value="' + decodeURIComponent(kv[1]) + '" name="' + decodeURIComponent(kv[0]) + '">');
+		});
+
+		$('a.icon-timesheet').click(function() {
+			$("#csv_form")[0].submit();
+			return false;
+		});
+});
+</script>
